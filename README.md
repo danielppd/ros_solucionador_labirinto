@@ -104,3 +104,7 @@ O projeto usa `ament_cmake` como sistema de build, com dependências:
 - `rclcpp`: Cliente C++ do ROS 2
 - `cg_interfaces`: Mensagens e serviços customizados do simulador
 
+
+## Vídeo de Demonstração
+
+- [link para o vídeo](https://drive.google.com/drive/u/0/folders/1fYxEx8BB9Ypm_MF_szbvw_4IY0ICb0qW)
