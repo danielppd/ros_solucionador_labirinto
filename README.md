@@ -18,12 +18,12 @@ Certifique-se de ter o ROS 2 instalado. Clone este repositório no seu workspace
 1. Na raiz do workspace, instale as dependências e compile:
 
 ```bash
-cd ~/Inteli/2o_ano/ponderada_ros
 colcon build
 source install/setup.bash
-🕹️ Como Executar
-São necessários dois terminais. Certifique-se de dar source install/setup.bash em ambos.
 ```
+
+### Como Executar
+São necessários dois terminais. Certifique-se de dar source install/setup.bash em ambos.
 
 Terminal 1 - Simulação: Inicia o ambiente do jogo.
 
@@ -43,10 +43,10 @@ ros2 run solucionador_labirinto rodar_solucao
 
 3. Pathfinding (BFS):
 
-- Utiliza uma fila (Queue) para explorar os vizinhos (Cima, Baixo, Esquerda, Direita).
+    - Utiliza uma fila (Queue) para explorar os vizinhos (Cima, Baixo, Esquerda, Direita).
 
-- Mantém um registro de células visitadas para evitar loops.
+    - Mantém um registro de células visitadas para evitar loops.
 
-- Ao encontrar o alvo, reconstrói o caminho de volta.
+    - Ao encontrar o alvo, reconstrói o caminho de volta.
 
 4. Atuação: Envia comandos sequenciais para o serviço /move_command.
