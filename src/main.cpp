@@ -6,11 +6,28 @@ int main(int argc, char** argv) {
     
     auto robo = std::make_shared<solucionador::ControladorRobo>();
     
-    // atenção: agora chamamos a exploração, não a navegação direta
+    // Verifica argumentos para decidir o modo
+    std::string modo = "navegar"; // padrão
+    if (argc > 1) {
+        for (int i = 1; i < argc; ++i) {
+            std::string arg = argv[i];
+            if (arg == "--explorar" || arg == "explorar") {
+                modo = "explorar";
+            }
+        }
+    }
+
     try {
-        robo->executar_exploracao();
+        if (modo == "explorar") {
+            RCLCPP_INFO(robo->get_logger(), "Modo selecionado: EXPLORAÇÃO (Parte 2)");
+            robo->executar_exploracao();
+        } else {
+            RCLCPP_INFO(robo->get_logger(), "Modo selecionado: NAVEGAÇÃO DIRETA (Parte 1)");
+            RCLCPP_INFO(robo->get_logger(), "Dica: Para rodar a exploração, use o argumento '--explorar'");
+            robo->executar_navegacao_direta();
+        }
     } catch (const std::exception& e) {
-        RCLCPP_ERROR(robo->get_logger(), "Erro durante exploração: %s", e.what());
+        RCLCPP_ERROR(robo->get_logger(), "Erro durante execução: %s", e.what());
     }
     
     rclcpp::shutdown();

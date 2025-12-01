@@ -3,6 +3,7 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <cg_interfaces/srv/move_cmd.hpp>
+#include <cg_interfaces/srv/get_map.hpp>
 #include <cg_interfaces/msg/robot_sensors.hpp>
 #include "solucionador_labirinto/algoritmos.hpp"
 #include <memory>
@@ -14,6 +15,7 @@ public:
     ControladorRobo();
     
     void executar_exploracao();
+    void executar_navegacao_direta();
 
 private:
     void callback_sensores(const cg_interfaces::msg::RobotSensors::SharedPtr msg);
@@ -21,6 +23,7 @@ private:
     void validar_mapa();
     
     rclcpp::Client<cg_interfaces::srv::MoveCmd>::SharedPtr cliente_movimento_;
+    rclcpp::Client<cg_interfaces::srv::GetMap>::SharedPtr cliente_mapa_;
     rclcpp::Subscription<cg_interfaces::msg::RobotSensors>::SharedPtr subscription_;
     
     cg_interfaces::msg::RobotSensors::SharedPtr ultimo_sensor_;

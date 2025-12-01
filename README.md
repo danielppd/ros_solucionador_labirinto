@@ -50,11 +50,22 @@ São necessários dois terminais. Certifique-se de dar `source install/setup.bas
 ros2 run cg maze
 ```
 
-**Terminal 2 - Controlador (Solução):** Inicia o nó que calcula a rota e move o robô.
+**Terminal 2 - Solucionador:**
 
-```bash
-ros2 run solucionador_labirinto rodar_solucao
-```
+O solucionador possui dois modos de operação, conforme os requisitos do desafio:
+
+1. **Parte 1 - Navegação Direta (Padrão):**
+   O robô recebe o mapa completo do servidor e calcula a rota otimizada imediatamente.
+   ```bash
+   ros2 run solucionador_labirinto rodar_solucao
+   ```
+
+2. **Parte 2 - Exploração (Fog of War):**
+   O robô explora o labirinto desconhecido usando sensores e valida o mapa ao final.
+   ```bash
+   ros2 run solucionador_labirinto rodar_solucao --explorar
+   ```
+
 
 ## Arquitetura do Código
 
